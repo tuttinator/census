@@ -35,6 +35,15 @@ gem 'spring',        group: :development
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+group :development do
+  gem 'annotate'
+  gem 'pry-rails'
+  gem 'better_errors'
+  gem 'brakeman', require: false
+  gem 'rails_best_practices', require: false
+end
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
