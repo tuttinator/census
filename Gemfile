@@ -37,6 +37,7 @@ gem 'spring',        group: :development
 # gem 'capistrano-rails', group: :development
 
 group :development do
+  gem 'thin'
   gem 'annotate'
   gem 'pry-rails'
   gem 'better_errors'
