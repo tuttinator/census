@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/neighborland/activerecord-postgis-adapter.git
+  revision: f91d841462b77eb79c21d8c4cdd01f06c224122a
+  specs:
+    activerecord-postgis-adapter (0.7.0)
+      activerecord (~> 4.1.0)
+      rgeo-ar (~> 0.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -137,6 +145,10 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     require_all (1.3.2)
+    rgeo (0.3.20)
+    rgeo-ar (0.7.0)
+      activerecord (~> 4.1)
+      rgeo (>= 0.3.20)
     rspec-core (2.14.8)
     rspec-expectations (2.14.5)
       diff-lcs (>= 1.1.3, < 2.0)
@@ -203,6 +215,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-postgis-adapter!
   annotate
   better_errors
   bootstrap-sass
