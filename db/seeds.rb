@@ -1,16 +1,14 @@
 require 'csv'
-
-# Step 1
-# check if /tmp/1_meshblock_geometries.csv exists
-# if it does not then download https://s3-ap-southeast-2.amazonaws.com/censusnz/1_meshblock_geometries.csv
-#
+require Rails.root.join 'lib', 'threaded_downloader'
 
 ['area_units', 'urban_areas', 'territorial_authorities', 'wards', 'community_boards',
 'territorial_authority_subdivisions', 'regional_councils', 'regional_council_constituencies',
 'regional_council_maori_constituencies', 'land_types'].each do |data_type|
 
+  puts "Importing #{data_type}..."
+
   # Turns a string like 'area_units' into a constant for a class like AreaUnit
-  model = data_type.singularize.constantize
+  model = data_type.classify.constantize
 
   # Can be run many times, will only parse the CSV is the model is empty
   if model.count == 0
@@ -19,4 +17,40 @@ require 'csv'
     end
   end
 
+end
+
+if Meshblock.count == 0
+
+  meshblock_csv_path = Rails.root.join 'tmp', 'meshblock_geometries.csv'
+
+  unless File.exists? meshblock_csv_path
+    print 'Are you sure you want to download the meshblock geometries CSV (453mb)? (y/n) '
+    answer = STDIN.gets
+    exit 1 unless answer[0].downcase == 'y'
+
+    thread = ThreadedDownloader.download('http://s3-ap-southeast-2.amazonaws.com/censusnz/1_meshblock_geometries.csv', to: meshblock_csv_path)
+
+    puts "%.2f%%" % thread[:progress].to_f until thread.join 1
+
+    puts 'Download complete'
+  end
+
+  puts 'Creating meshblocks'
+
+  CSV.foreach(meshblock_csv_path, headers: true) do |attrs|
+    Meshblock.create(id:                                      attrs['id'],
+                     area_unit_id:                            attrs['area_unit_id'],
+                     urban_authority_id:                      attrs['urban_authority_id'],
+                     territorial_authority_id:                attrs['territorial_authority_id'],
+                     ward_id:                                 attrs['ward_id'],
+                     community_board_id:                      attrs['community_board_id'],
+                     territorial_authority_subdivision_id:    attrs['territorial_authority_subdivision_id'],
+                     regional_council_id:                     attrs['regional_council_id'],
+                     regional_council_constituency_id:        attrs['regional_council_constituency_id'],
+                     regional_council_maori_constituency_id:  attrs['regional_council_maori_constituency_id'],
+                     land_type_id:                            attrs['land_type_id'],
+                     shape_length:                            attrs['shape_length'],
+                     shape_area:                              attrs['shape_area'],
+                     shape:                                   attrs['shape'])
+  end
 end

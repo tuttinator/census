@@ -4,9 +4,9 @@ require 'uri'
 module ThreadedDownloader
   def self.download(url, options)
     options.assert_valid_keys(:to)
-    file_handle = File.open(options[:to], 'w')
 
     Thread.new do
+      file_handle = File.open(options[:to], 'w')
       thread = Thread.current
 
       url = URI.parse url
@@ -19,7 +19,7 @@ module ThreadedDownloader
           thread[:progress] = thread[:done].quo(length) * 100
         end
       end
+      file_handle.close
     end
-    file_handle.close
   end
 end
