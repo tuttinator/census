@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
 require 'csv'
 
 # Step 1
@@ -13,83 +5,18 @@ require 'csv'
 # if it does not then download https://s3-ap-southeast-2.amazonaws.com/censusnz/1_meshblock_geometries.csv
 #
 
-if AreaUnit.count == 0
-  puts "Creating Area Units"
+['area_units', 'urban_areas', 'territorial_authorities', 'wards', 'community_boards',
+'territorial_authority_subdivisions', 'regional_councils', 'regional_council_constituencies',
+'regional_council_maori_constituencies', 'land_types'].each do |data_type|
 
-  CSV.foreach(Rails.root.join('db', 'seeds', 'meshblocks', '2_area_units.csv'), headers: true) do |attrs|
-    AreaUnit.create(id: attrs["id"].to_i, name: attrs["name"])
+  # Turns a string like 'area_units' into a constant for a class like AreaUnit
+  model = data_type.singularize.constantize
+
+  # Can be run many times, will only parse the CSV is the model is empty
+  if model.count == 0
+    CSV.foreach(Rails.root.join('db', 'seeds', 'meshblocks', "#{data_type}.csv"), headers: true) do |attrs|
+      model.create(id: attrs['id'].to_i, name: attrs['name'])
+    end
   end
+
 end
-
-if UrbanArea.count == 0
-  puts "Creating Urban Areas"
-
-  CSV.foreach(Rails.root.join('db', 'seeds', 'meshblocks', '3_urban_areas.csv'), headers: true) do |attrs|
-    UrbanArea.create(id: attrs["id"].to_i, name: attrs["name"])
-  end
-end
-
-if TerritorialAuthority.count == 0
-  puts "Creating Territorial Authorities"
-
-  CSV.foreach(Rails.root.join('db', 'seeds', 'meshblocks', '4_territorial_authorities.csv'), headers: true) do |attrs|
-    TerritorialAuthority.create(id: attrs["id"].to_i, name: attrs["name"])
-  end
-end
-
-if Ward.count == 0
-  puts "Creating Wards"
-
-  CSV.foreach(Rails.root.join('db', 'seeds', 'meshblocks', '5_wards.csv'), headers: true) do |attrs|
-    Ward.create(id: attrs["id"].to_i, name: attrs["name"])
-  end
-end
-
-if CommunityBoard.count == 0
-  puts "Creating Community Boards"
-
-  CSV.foreach(Rails.root.join('db', 'seeds', 'meshblocks', '6_community_boards.csv'), headers: true) do |attrs|
-    CommunityBoard.create(id: attrs["id"].to_i, name: attrs["name"])
-  end
-end
-
-if TerritorialAuthoritySubdivision.count == 0
-  puts "Creating Territorial Authority Subdivisions"
-
-  CSV.foreach(Rails.root.join('db', 'seeds', 'meshblocks', '7_territorial_authority_subdivisions.csv'), headers: true) do |attrs|
-    TerritorialAuthoritySubdivision.create(id: attrs["id"].to_i, name: attrs["name"])
-  end
-end
-
-if RegionalCouncil.count == 0
-  puts "Creating Regional Councils"
-
-  CSV.foreach(Rails.root.join('db', 'seeds', 'meshblocks', '8_regional_councils.csv'), headers: true) do |attrs|
-    RegionalCouncil.create(id: attrs["id"].to_i, name: attrs["name"])
-  end
-end
-
-if RegionalCouncilConstituency.count == 0
-  puts "Creating Regional Council Constituencies"
-
-  CSV.foreach(Rails.root.join('db', 'seeds', 'meshblocks', '9_regional_council_constituencies.csv'), headers: true) do |attrs|
-    RegionalCouncilConstituency.create(id: attrs["id"].to_i, name: attrs["name"])
-  end
-end
-
-if RegionalCouncilMaoriConstituency.count == 0
-  puts "Creating Regional Council Maori Constituencies"
-
-  CSV.foreach(Rails.root.join('db', 'seeds', 'meshblocks', '10_regional_council_maori_constituencies.csv'), headers: true) do |attrs|
-    RegionalCouncilMaoriConstituency.create(id: attrs["id"].to_i, name: attrs["name"])
-  end
-end
-
-if LandType.count == 0
-  puts "Creating Land Types"
-
-  CSV.foreach(Rails.root.join('db', 'seeds', 'meshblocks', '11_land_types.csv'), headers: true) do |attrs|
-    LandType.create(id: attrs["id"].to_i, name: attrs["name"])
-  end
-end
-
