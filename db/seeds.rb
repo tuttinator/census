@@ -1,5 +1,5 @@
 require 'csv'
-require Rails.root.join 'lib', 'threaded_downloader'
+require Rails.root.join 'lib', 'downloader'
 
 ['area_units', 'urban_areas', 'territorial_authorities', 'wards', 'community_boards',
 'territorial_authority_subdivisions', 'regional_councils', 'regional_council_constituencies',
@@ -21,6 +21,11 @@ end
 
 if Meshblock.count == 0
 
+  # Make a tmp folder in the Rails root if it does not exist
+  # tmp is ignored by the .gitignore file, so not checked in
+  # to git
+  FileUtils.mkdir_p Rails.root.join 'tmp'
+
   meshblock_csv_path = Rails.root.join 'tmp', 'meshblock_geometries.csv'
 
   unless File.exists? meshblock_csv_path
@@ -28,9 +33,7 @@ if Meshblock.count == 0
     answer = STDIN.gets
     exit 1 unless answer[0].downcase == 'y'
 
-    thread = ThreadedDownloader.download('http://s3-ap-southeast-2.amazonaws.com/censusnz/1_meshblock_geometries.csv', to: meshblock_csv_path)
-
-    puts "%.2f%%" % thread[:progress].to_f until thread.join 1
+    Downloader.fetch('http://s3-ap-southeast-2.amazonaws.com/censusnz/1_meshblock_geometries.csv', to: meshblock_csv_path)
 
     puts 'Download complete'
   end

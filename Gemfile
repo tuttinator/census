@@ -46,6 +46,7 @@ group :development do
   gem 'better_errors'
   gem 'brakeman', require: false
   gem 'rails_best_practices', require: false
+  gem 'ruby-progressbar', require: false
 end
 
 group :development, :test do
