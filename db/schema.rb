@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140425115022) do
+ActiveRecord::Schema.define(version: 20140425231009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,18 @@ ActiveRecord::Schema.define(version: 20140425115022) do
     t.datetime "updated_at"
   end
 
+  create_table "tenures", force: true do |t|
+    t.integer  "meshblock_id"
+    t.integer  "census_year_id"
+    t.integer  "do_not_own"
+    t.integer  "not_elsewhere_included"
+    t.integer  "own_or_partly_own"
+    t.integer  "total_people"
+    t.integer  "total_stated"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "territorial_authorities", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -83,6 +95,44 @@ ActiveRecord::Schema.define(version: 20140425115022) do
 
   create_table "territorial_authority_subdivisions", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "travel_methods", force: true do |t|
+    t.integer  "meshblock_id"
+    t.integer  "census_year_id"
+    t.integer  "bicycle"
+    t.integer  "drove_company_car"
+    t.integer  "drove_private_car"
+    t.integer  "motor_cycle"
+    t.integer  "passenger"
+    t.integer  "public_bus"
+    t.integer  "train"
+    t.integer  "walked_or_jogged"
+    t.integer  "at_home"
+    t.integer  "did_not_go"
+    t.integer  "other"
+    t.integer  "not_elsewhere_included"
+    t.integer  "total"
+    t.integer  "total_stated"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "unpaid_activities", force: true do |t|
+    t.integer  "meshblock_id"
+    t.integer  "census_year_id"
+    t.integer  "household"
+    t.integer  "looking_after_child_not_own_household"
+    t.integer  "looking_after_child_own_household"
+    t.integer  "looking_after_not_own_household_member_who_is_ill_or_disable"
+    t.integer  "looking_after_own_household_member_who_is_ill_or_disabled"
+    t.integer  "none"
+    t.integer  "not_elsewhere_included"
+    t.integer  "voluntary"
+    t.integer  "total"
+    t.integer  "total_stated"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -161,6 +211,27 @@ ActiveRecord::Schema.define(version: 20140425115022) do
     t.integer  "total"
     t.integer  "total_stated"
     t.integer  "unemployed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "workplace_travel_methods", force: true do |t|
+    t.integer  "meshblock_id"
+    t.integer  "census_year_id"
+    t.integer  "bicycle"
+    t.integer  "drove_company_car"
+    t.integer  "drove_private_car"
+    t.integer  "motor_cycle"
+    t.integer  "passenger"
+    t.integer  "public_bus"
+    t.integer  "train"
+    t.integer  "walked_or_jogged"
+    t.integer  "at_home"
+    t.integer  "did_not_go"
+    t.integer  "other"
+    t.integer  "not_elsewhere_included"
+    t.integer  "total"
+    t.integer  "total_stated"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
