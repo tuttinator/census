@@ -1,4 +1,4 @@
-meshblock_id,census_id,full_time,not_in_the_labour_force,part_time,status_unidentifiable,total,total_stated,unemployed
+meshblock_id,census_year_id,full_time,not_in_the_labour_force,part_time,status_unidentifiable,total,total_stated,unemployed
 100,1,0,0,0,0,6,6,0
 200,1,18,27,6,0,57,57,6
 300,1,6,42,6,0,57,54,3
