@@ -42,7 +42,7 @@ module Seeds
           puts 'Download complete'
         end
 
-        puts 'Creating meshblocks'
+        puts 'Importing meshblocks (this may take some time)...'
 
         CSV.foreach(meshblock_csv_path, headers: true) do |attrs|
           Meshblock.create(id:                                      attrs['id'],
