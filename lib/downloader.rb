@@ -7,16 +7,24 @@ module Downloader
 
     progress_bar = nil
 
-    open(options[:to], 'w') do |f|
+    content_length_proc = Proc.new do |total|
+      progress_bar = ProgressBar.create(format: '%E %bᗧ%i %p%% %t',
+                                        progress_mark: ' ',
+                                        remainder_mark: '･',
+                                        starting_at: 10,
+                                        title: 'Downloaded',
+                                        total: total)
+    end
 
-      f.write open url,
-        content_length_proc: Proc.new { |total|
-          progress_bar = ProgressBar.create(title: 'Downloaded', total: total)
-        },
-        progress_proc: Proc.new { |step|
-          progress_bar.progress = step
-        }
+    progress_proc = Proc.new do |step|
+      progress_bar.progress = step
+    end
 
+    file_buffer = open(url, content_length_proc: content_length_proc,
+                       progress_proc: progress_proc)
+
+    open(options[:to], 'wb') do |local_file|
+      local_file << file_buffer.read
     end
   end
 end
