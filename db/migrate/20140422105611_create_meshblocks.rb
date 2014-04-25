@@ -13,7 +13,7 @@ class CreateMeshblocks < ActiveRecord::Migration
       t.integer :land_type_id
       t.decimal :shape_length
       t.decimal :shape_area
-      t.polygon :geometry_collection, geographic: true, srid: 3857
+      t.multi_polygon :shape, srid: 3857
     end
   end
 end

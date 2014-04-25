@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20140422113904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "hstore"
   enable_extension "postgis"
 
   create_table "area_units", force: true do |t|
@@ -49,7 +48,7 @@ ActiveRecord::Schema.define(version: 20140422113904) do
     t.integer "land_type_id"
     t.decimal "shape_length"
     t.decimal "shape_area"
-    t.spatial "shape",                                  limit: {:srid=>0, :type=>"polygon"}
+    t.spatial "shape",                                  limit: {:srid=>3857, :type=>"multi_polygon"}
   end
 
   create_table "regional_council_constituencies", force: true do |t|
