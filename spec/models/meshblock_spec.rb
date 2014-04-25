@@ -15,7 +15,7 @@
 #  land_type_id                           :integer
 #  shape_length                           :decimal(, )
 #  shape_area                             :decimal(, )
-#  shape                                  :spatial          polygon, 0
+#  shape                                  :spatial          multipolygon, 3857
 #
 
 require 'spec_helper'
