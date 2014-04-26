@@ -1,4 +1,4 @@
-meshblock_id,census_year_id,clerical_and_admin,community_and_personal_service,labourers,machinery_operators_and_driver,managers,not_elsewhere_included,professionals,sales,technicians_and_trade_workers,total,total_stated
+meshblock_id,census_year_id,clerical_and_admin,community_and_personal_service,labourers,machinery_operators_and_drivers,managers,not_elsewhere_included,professionals,sales,technicians_and_trade_workers,total,total_stated
 100,2,0,0,0,0,0,0,0,0,0,0,0
 200,2,3,6,3,3,9,3,0,0,3,30,27
 300,2,0,3,6,3,3,3,3,0,3,21,21

@@ -10,7 +10,7 @@ class CreateTelecomunications < ActiveRecord::Migration
       t.integer :telephone
       t.integer :not_elsewhere_included
       t.integer :total
-      t.string :total_stated
+      t.integer :total_stated
 
       t.timestamps
     end

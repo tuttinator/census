@@ -9,7 +9,7 @@ class CreateStudyParticipations < ActiveRecord::Migration
       t.integer :not_studying
       t.integer :part_time
       t.integer :total
-      t.string :total_stated
+      t.integer :total_stated
 
       t.timestamps
     end

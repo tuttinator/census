@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20140426041203) do
     t.integer  "clerical_and_admin"
     t.integer  "community_and_personal_service"
     t.integer  "labourers"
-    t.integer  "machinery_operators_and_driver"
+    t.integer  "machinery_operators_and_drivers"
     t.integer  "managers"
     t.integer  "not_elsewhere_included"
     t.integer  "professionals"
@@ -546,7 +546,7 @@ ActiveRecord::Schema.define(version: 20140426041203) do
   create_table "night_populations", force: true do |t|
     t.integer  "meshblock_id"
     t.integer  "census_year_id"
-    t.string   "residents"
+    t.integer  "residents"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -720,7 +720,7 @@ ActiveRecord::Schema.define(version: 20140426041203) do
     t.integer  "not_elsewhere_included"
     t.integer  "regular"
     t.integer  "total"
-    t.string   "total_stated"
+    t.integer  "total_stated"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -734,7 +734,7 @@ ActiveRecord::Schema.define(version: 20140426041203) do
     t.integer  "not_studying"
     t.integer  "part_time"
     t.integer  "total"
-    t.string   "total_stated"
+    t.integer  "total_stated"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -749,7 +749,7 @@ ActiveRecord::Schema.define(version: 20140426041203) do
     t.integer  "telephone"
     t.integer  "not_elsewhere_included"
     t.integer  "total"
-    t.string   "total_stated"
+    t.integer  "total_stated"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

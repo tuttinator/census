@@ -6,7 +6,7 @@ class CreateAnzscoOccupations < ActiveRecord::Migration
       t.integer :clerical_and_admin
       t.integer :community_and_personal_service
       t.integer :labourers
-      t.integer :machinery_operators_and_driver
+      t.integer :machinery_operators_and_drivers
       t.integer :managers
       t.integer :not_elsewhere_included
       t.integer :professionals

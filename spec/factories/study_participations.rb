@@ -11,7 +11,7 @@
 #  not_studying       :integer
 #  part_time          :integer
 #  total              :integer
-#  total_stated       :string(255)
+#  total_stated       :integer
 #  created_at         :datetime
 #  updated_at         :datetime
 #

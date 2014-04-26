@@ -5,7 +5,7 @@
 #  id             :integer          not null, primary key
 #  meshblock_id   :integer
 #  census_year_id :integer
-#  residents      :string(255)
+#  residents      :integer
 #  created_at     :datetime
 #  updated_at     :datetime
 #

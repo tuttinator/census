@@ -8,7 +8,7 @@ class CreateSmokers < ActiveRecord::Migration
       t.integer :not_elsewhere_included
       t.integer :regular
       t.integer :total
-      t.string :total_stated
+      t.integer :total_stated
 
       t.timestamps
     end
