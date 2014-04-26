@@ -6,6 +6,279 @@ end
 
 Seeds::GeographicData.load!
 
+
+# ANZIC 96 Industries
+puts 'Importing ANZIC 96 Industries...'
+CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'anzic96_industries.csv'), headers: true) do |attrs|
+  Anzic96Industry.create(meshblock_id: attrs['meshblock_id'],
+                         census_year_id: attrs['census_year_id'],
+                         accommodation_cafes_and_restaurants: attrs['accommodation_cafes_and_restaurants'],
+                         agriculture_forestry_and_fishing: attrs['agriculture_forestry_and_fishing'],
+                         communication_services: attrs['communication_services'],
+                         construction: attrs['construction'],
+                         culture_and_recreational_services: attrs['culture_and_recreational_services'],
+                         education: attrs['education'],
+                         electricity_gas_and_water_supply: attrs['electricity_gas_and_water_supply'],
+                         finance_and_insurance: attrs['finance_and_insurance'],
+                         government_admin_and_defence: attrs['government_admin_and_defence'],
+                         health_and_community_services: attrs['health_and_community_services'],
+                         manufacturing: attrs['manufacturing'],
+                         mining: attrs['mining'],
+                         not_elsewhere_included: attrs['not_elsewhere_included'],
+                         personal_and_other_services: attrs['personal_and_other_services'],
+                         property_and_business_services: attrs['property_and_business_services'],
+                         retail_trade: attrs['retail_trade'],
+                         total: attrs['total'],
+                         total_stated: attrs['total_stated'],
+                         transport_and_storage: attrs['transport_and_storage'],
+                         wholesale_trade: attrs['wholesale_trade'])
+end
+
+# ANZIC 96 Industries
+puts 'Importing ANZIC 96 Workplace Industries...'
+CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'anzic96_workplace_industries.csv'), headers: true) do |attrs|
+  Anzic96WorkplaceIndustry.create(meshblock_id: attrs['meshblock_id'],
+                                  census_year_id: attrs['census_year_id'],
+                                  accommodation_cafes_and_restaurants: attrs['accommodation_cafes_and_restaurants'],
+                                  agriculture_forestry_and_fishing: attrs['agriculture_forestry_and_fishing'],
+                                  communication_services: attrs['communication_services'],
+                                  construction: attrs['construction'],
+                                  culture_and_recreational_services: attrs['culture_and_recreational_services'],
+                                  education: attrs['education'],
+                                  electricity_gas_and_water_supply: attrs['electricity_gas_and_water_supply'],
+                                  finance_and_insurance: attrs['finance_and_insurance'],
+                                  government_admin_and_defence: attrs['government_admin_and_defence'],
+                                  health_and_community_services: attrs['health_and_community_services'],
+                                  manufacturing: attrs['manufacturing'],
+                                  mining: attrs['mining'],
+                                  not_elsewhere_included: attrs['not_elsewhere_included'],
+                                  personal_and_other_services: attrs['personal_and_other_services'],
+                                  property_and_business_services: attrs['property_and_business_services'],
+                                  retail_trade: attrs['retail_trade'],
+                                  total: attrs['total'],
+                                  total_stated: attrs['total_stated'],
+                                  transport_and_storage: attrs['transport_and_storage'],
+                                  wholesale_trade: attrs['wholesale_trade'])
+end
+
+# ANZSCO Occupation
+puts 'Importing Anzsco Occupations...'
+CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'anzsco_occupations.csv'), headers: true) do |attrs|
+  AnzscoOccupation.create(meshblock_id: attrs['meshblock_id'],
+                          census_year_id: attrs['census_year_id'],
+                          clerical_and_admin: attrs['clerical_and_admin'],
+                          community_and_personal_service: attrs['community_and_personal_service'],
+                          labourers: attrs['labourers'],
+                          machinery_operators_and_driver: attrs['machinery_operators_and_driver'],
+                          managers: attrs['managers'],
+                          not_elsewhere_included: attrs['not_elsewhere_included'],
+                          professionals: attrs['professionals'],
+                          sales: attrs['sales'],
+                          technicians_and_trade_workers: attrs['technicians_and_trade_workers'],
+                          total: attrs['total'],
+                          total_stated: attrs['total_stated'])
+end
+
+# ANZSCO Workplace Occupation
+puts 'Importing Anzsco Workplace Occupations...'
+CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'anzsco_workplace_occupations.csv'), headers: true) do |attrs|
+  AnzscoOccupation.create(meshblock_id: attrs['meshblock_id'],
+                          census_year_id: attrs['census_year_id'],
+                          clerical_and_admin: attrs['clerical_and_admin'],
+                          community_and_personal_service: attrs['community_and_personal_service'],
+                          labourers: attrs['labourers'],
+                          machinery_operators_and_drivers: attrs['machinery_operators_and_drivers'],
+                          managers: attrs['managers'],
+                          not_elsewhere_included: attrs['not_elsewhere_included'],
+                          professionals: attrs['professionals'],
+                          sales: attrs['sales'],
+                          technicians_and_trade_workers: attrs['technicians_and_trade_workers'],
+                          total: attrs['total'],
+                          total_stated: attrs['total_stated'])
+end
+
+
+# Anzsic06 Industries
+puts 'Importing Anzsic06 Industries...'
+CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'anzsic06_industries.csv'), headers: true) do |attrs|
+  Anzsic06Industry.create(meshblock_id: attrs['meshblock_id'],
+                          census_year_id: attrs['census_year_id'],
+                          accomodation_and_food: attrs['accomodation_and_food'],
+                          admin_and_support: attrs['admin_and_support'],
+                          agriculture_forestry_and_fishing: attrs['agriculture_forestry_and_fishing'],
+                          arts_and_recreation: attrs['arts_and_recreation'],
+                          construction: attrs['construction'],
+                          education_and_training: attrs['education_and_training'],
+                          electricity_gas_water_and_waster_services: attrs['electricity_gas_water_and_waster_services'],
+                          financial_and_insurance: attrs['financial_and_insurance'],
+                          health_care_and_social_assistance: attrs['health_care_and_social_assistance'],
+                          information_media_and_telecoms: attrs['information_media_and_telecoms'],
+                          manufacturing: attrs['manufacturing'],
+                          mining: attrs['mining'],
+                          not_elsewhere_included: attrs['not_elsewhere_included'],
+                          other: attrs['other'],
+                          professional_scientific_and_technical: attrs['professional_scientific_and_technical'],
+                          public_admin_and_safety: attrs['public_admin_and_safety'],
+                          rental_hiring_and_real_estate: attrs['rental_hiring_and_real_estate'],
+                          retail: attrs['retail'],
+                          total: attrs['total'],
+                          total_stated: attrs['total_stated'],
+                          transport_postal_and_warehousing: attrs['transport_postal_and_warehousing'],
+                          wholesale: attrs['wholesale'])
+end
+
+# Arrival Years
+puts 'Importing Arrival Years...'
+CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'arrival_years.csv'), headers: true) do |attrs|
+  ArrivalYear.create(meshblock_id: attrs['meshblock_id'],
+                     census_year_id: attrs['census_year_id'],
+                     zero_to_nine_years: attrs['zero_to_nine_years'],
+                     ten_to_nineteen_years: attrs['ten_to_nineteen_years'],
+                     twenty_to_twenty_nine_year: attrs['twenty_to_twenty_nine_year'],
+                     thirty_to_thirty_nine_year: attrs['thirty_to_thirty_nine_year'],
+                     forty_to_forty_nine_years: attrs['forty_to_forty_nine_years'],
+                     fifty_years_or_more: attrs['fifty_years_or_more'],
+                     not_elsewhere_included: attrs['not_elsewhere_included'],
+                     total: attrs['total'],
+                     total_stated: attrs['total_stated'])
+end
+
+
+# Birthplaces
+puts 'Importing Birthplaces...'
+CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'birthplaces.csv'), headers: true) do |attrs|
+  Birthplace.create(meshblock_id: attrs['meshblock_id'],
+                    census_year_id: attrs['census_year_id'],
+                    new_zealand: attrs['new_zealand'],
+                    overseas: attrs['overseas'],
+                    not_elsewhere_included: attrs['not_elsewhere_included'],
+                    total: attrs['total'],
+                    total_stated: attrs['total_stated'])
+end
+
+# BroadAgeGroups
+puts 'Importing BroadAgeGroups...'
+CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'broad_age_groups.csv'), headers: true) do |attrs|
+  BroadAgeGroup.create(meshblock_id: attrs['meshblock_id'],
+                       census_year_id: attrs['census_year_id'],
+                       under_fifteen_years: attrs['under_fifteen_years'],
+                       fifteen_to_sixtyfour_year_olds: attrs['fifteen_to_sixtyfour_year_olds'],
+                       sixtyfive_years_and_older: attrs['sixtyfive_years_and_older'],
+                       total_people: attrs['total_people'])
+end
+
+# Children
+puts 'Importing Children...'
+CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'children.csv'), headers: true) do |attrs|
+  Children.create(meshblock_id: attrs['meshblock_id'],
+                  census_year_id: attrs['census_year_id'],
+                  none: attrs['none'],
+                  one: attrs['one'],
+                  two: attrs['two'],
+                  three: attrs['three'],
+                  four: attrs['four'],
+                  five: attrs['five'],
+                  six_or_more: attrs['six_or_more'],
+                  object: attrs['object'],
+                  not_elsewhere_included: attrs['not_elsewhere_included'],
+                  total: attrs['total'],
+                  total_stated: attrs['total_stated'])
+end
+
+
+# Descendants
+puts 'Importing Descendants...'
+CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'descendants.csv'), headers: true) do |attrs|
+  Descendant.create(meshblock_id: attrs['meshblock_id'],
+                    census_year_id: attrs['census_year_id'],
+                    dont_know: attrs['dont_know'],
+                    maori: attrs['maori'],
+                    no_maori: attrs['no_maori'],
+                    not_elsewhere_included: attrs['not_elsewhere_included'],
+                    total: attrs['total'],
+                    total_stated: attrs['total_stated'])
+end
+
+# Dwellings
+puts 'Importing Dwellings...'
+CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'dwellings.csv'), headers: true) do |attrs|
+  Dwelling.create(meshblock_id: attrs['meshblock_id'],
+                  census_year_id: attrs['census_year_id'],
+                  separate_houses: attrs['separate_houses'],
+                  two_or_more_flats: attrs['two_or_more_flats'],
+                  not_further_defined: attrs['not_further_defined'],
+                  other_types: attrs['other_types'],
+                  total: attrs['total'])
+end
+
+# EmploymentStatuses
+puts 'Importing EmploymentStatuses...'
+CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'employment_statuses.csv'), headers: true) do |attrs|
+  EmploymentStatus.create(meshblock_id: attrs['meshblock_id'],
+                          census_year_id: attrs['census_year_id'],
+                          employer: attrs['employer'],
+                          paid_employee: attrs['paid_employee'],
+                          self_employed_without_employee: attrs['self_employed_without_employee'],
+                          unpaid_family_worker: attrs['unpaid_family_worker'],
+                          not_elsewhere_included: attrs['not_elsewhere_included'],
+                          total: attrs['total'],
+                          total_stated: attrs['total_stated'])
+end
+
+
+# Ethnicities
+puts 'Importing Ethnicities...'
+CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'ethnicities.csv'), headers: true) do |attrs|
+  Ethnicity.create(meshblock_id: attrs['meshblock_id'],
+                   census_year_id: attrs['census_year_id'],
+                   asians: attrs['asians'],
+                   europeans: attrs['europeans'],
+                   maoris: attrs['maoris'],
+                   melaas: attrs['melaas'],
+                   not_elsewhere_included: attrs['not_elsewhere_included'],
+                   pasifikas: attrs['pasifikas'],
+                   others: attrs['others'],
+                   total_stated: attrs['total_stated'],
+                   total: attrs['total'])
+end
+
+
+
+# Relationships
+puts 'Importing Relationships...'
+CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'relationships.csv'), headers: true) do |attrs|
+  Relationship.create(meshblock_id: attrs['meshblock_id'],
+                      census_year_id: attrs['census_year_id'],
+                      married: attrs['married'],
+                      never_married: attrs['never_married'],
+                      not_elsewhere_included: attrs['not_elsewhere_included'],
+                      separated: attrs['separated'],
+                      total: attrs['total'],
+                      total_stated: attrs['total_stated'])
+end
+
+
+# Religions
+puts 'Importing Religions...'
+CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'religions.csv'), headers: true) do |attrs|
+  Religion.create(meshblock_id: attrs['meshblock_id'],
+                  census_year_id: attrs['census_year_id'],
+                  buddhist: attrs['buddhist'],
+                  christian: attrs['christian'],
+                  hindu: attrs['hindu'],
+                  jewish: attrs['jewish'],
+                  maori_christian: attrs['maori_christian'],
+                  muslim: attrs['muslim'],
+                  spiritual: attrs['spiritual'],
+                  other: attrs['other'],
+                  no_religion: attrs['no_religion'],
+                  object: attrs['object'],
+                  not_elsewhere_included: attrs['not_elsewhere_included'],
+                  total: attrs['total'],
+                  total_stated: attrs['total_stated'])
+end
+
+
 # Residence Years
 puts 'Importing Residence Years...'
 CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'residence_years.csv'), headers: true) do |attrs|

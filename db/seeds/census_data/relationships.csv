@@ -1,4 +1,4 @@
-meshblock_id,census_year_id,married,never,not_elsewhere_included,separated,total,total_stated
+meshblock_id,census_year_id,married,never_married,not_elsewhere_included,separated,total,total_stated
 100,1,0,0,0,0,6,6
 200,1,15,24,6,9,57,51
 300,1,21,27,6,3,57,51
