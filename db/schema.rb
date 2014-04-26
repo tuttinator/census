@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140425231009) do
+ActiveRecord::Schema.define(version: 20140426001434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,94 @@ ActiveRecord::Schema.define(version: 20140425231009) do
 
   create_table "regional_councils", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "religions", force: true do |t|
+    t.integer  "meshblock_id"
+    t.integer  "census_year_id"
+    t.integer  "buddhist"
+    t.integer  "christian"
+    t.integer  "hindu"
+    t.integer  "jewish"
+    t.integer  "maori_christian"
+    t.integer  "muslim"
+    t.integer  "spiritual"
+    t.integer  "other"
+    t.integer  "no_religion"
+    t.integer  "object"
+    t.integer  "not_elsewhere_included"
+    t.integer  "total"
+    t.integer  "total_stated"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "residence_years", force: true do |t|
+    t.integer  "meshblock_id"
+    t.integer  "census_year_id"
+    t.integer  "thirty_years_or_more"
+    t.integer  "fifteen_to_twenty_nine_years"
+    t.integer  "five_to_nine_years"
+    t.integer  "not_elsewhere_included"
+    t.integer  "one_to_four_years"
+    t.integer  "ten_to_fourteen_years"
+    t.integer  "total"
+    t.integer  "total_people"
+    t.integer  "zero_years"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sexes", force: true do |t|
+    t.integer  "meshblock_id"
+    t.integer  "census_year_id"
+    t.integer  "females"
+    t.integer  "males"
+    t.integer  "total"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "smokers", force: true do |t|
+    t.integer  "meshblock_id"
+    t.integer  "census_year_id"
+    t.integer  "ex"
+    t.integer  "never"
+    t.integer  "not_elsewhere_included"
+    t.integer  "regular"
+    t.integer  "total"
+    t.string   "total_stated"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "study_participations", force: true do |t|
+    t.integer  "meshblock_id"
+    t.integer  "census_year_id"
+    t.integer  "full_and_part_time"
+    t.integer  "full_time"
+    t.integer  "not_stated"
+    t.integer  "not_studying"
+    t.integer  "part_time"
+    t.integer  "total"
+    t.string   "total_stated"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "telecomunications", force: true do |t|
+    t.integer  "meshblock_id"
+    t.integer  "census_year_id"
+    t.integer  "fax"
+    t.integer  "internet"
+    t.integer  "mobile"
+    t.integer  "no_access"
+    t.integer  "telephone"
+    t.integer  "not_elsewhere_included"
+    t.integer  "total"
+    t.string   "total_stated"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

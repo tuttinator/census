@@ -6,6 +6,92 @@ end
 
 Seeds::GeographicData.load!
 
+# Residence Years
+puts 'Importing Residence Years...'
+CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'residence_years.csv'), headers: true) do |attrs|
+  ResidenceYear.create(meshblock_id: attrs['meshblock_id'],
+                       census_year_id: attrs['census_year_id'],
+                       thirty_years_or_more: attrs['thirty_years_or_more'],
+                       fifteen_to_twenty_nine_years: attrs['fifteen_to_twenty_nine_years'],
+                       five_to_nine_years: attrs['five_to_nine_years'],
+                       not_elsewhere_included: attrs['not_elsewhere_included'],
+                       one_to_four_years: attrs['one_to_four_years'],
+                       ten_to_fourteen_years: attrs['ten_to_fourteen_years'],
+                       total: attrs['total'],
+                       total_people: attrs['total_people'],
+                       zero_years: attrs['zero_years'])
+end
+
+
+# Sexes
+puts 'Importing Sexes...'
+CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'sexes.csv'), headers: true) do |attrs|
+  Sex.create(meshblock_id: attrs['meshblock_id'],
+             census_year_id: attrs['census_year_id'],
+             females: attrs['females'],
+             males: attrs['males'],
+             total: attrs['total'])
+end
+
+
+# Smokers
+puts 'Importing Smokers...'
+CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'smokers.csv'), headers: true) do |attrs|
+  StudyParticipation.create(meshblock_id: attrs['meshblock_id'],
+                            census_year_id: attrs['census_year_id'],
+                            ex: attrs['ex'],
+                            never: attrs['never'],
+                            not_elsewhere_included: attrs['not_elsewhere_included'],
+                            regular: attrs['regular'],
+                            total: attrs['total'],
+                            total_stated: attrs['total_stated'])
+end
+
+
+# Study Participation
+puts 'Importing Study Participation...'
+CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'study_participation.csv'), headers: true) do |attrs|
+  StudyParticipation.create(meshblock_id: attrs['meshblock_id'],
+                            census_year_id: attrs['census_year_id'],
+                            full_and_part_time: attrs['full_and_part_time'],
+                            full_time: attrs['full_time'],
+                            not_stated: attrs['not_stated'],
+                            not_studying: attrs['not_studying'],
+                            part_time: attrs['part_time'],
+                            total: attrs['total'],
+                            total_stated: attrs['total_stated'])
+end
+
+
+# Telecommunications
+puts 'Importing Telecommunications...'
+CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'telecommunications.csv'), headers: true) do |attrs|
+  Telecommunication.create(meshblock_id: attrs['meshblock_id'],
+                           census_year_id: attrs['census_year_id'],
+                           fax: attrs['fax'],
+                           internet: attrs['internet'],
+                           mobile: attrs['mobile'],
+                           no_access: attrs['no_access'],
+                           not_elsewhere_included: attrs['not_elsewhere_included'],
+                           telephone: attrs['telephone'],
+                           total: attrs['total'],
+                           total_stated: attrs['total_stated'])
+end
+
+
+# Tenures
+puts 'Importing Tenure...'
+CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'tenures.csv'), headers: true) do |attrs|
+  Tenure.create(meshblock_id: attrs['meshblock_id'],
+                census_year_id: attrs['census_year_id'],
+                do_not_own: attrs['do_not_own'],
+                not_elsewhere_included: attrs['not_elsewhere_included'],
+                own_or_partly_own: attrs['own_or_partly_own'],
+                total_people: attrs['total_people'],
+                total_stated: attrs['total_stated'])
+end
+
+
 # Travel Methods
 puts 'Importing Travel Methods...'
 CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'travel_methods.csv'), headers: true) do |attrs|
