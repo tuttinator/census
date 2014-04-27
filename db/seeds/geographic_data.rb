@@ -9,13 +9,13 @@ module Seeds
       'territorial_authority_subdivisions', 'regional_councils', 'regional_council_constituencies',
       'regional_council_maori_constituencies', 'land_types'].each do |data_type|
 
-        puts "Importing #{data_type}..."
-
         # Turns a string like 'area_units' into a constant for a class like AreaUnit
         model = data_type.classify.constantize
 
         # Can be run many times, will only parse the CSV is the model is empty
         if model.count == 0
+        puts "Importing #{data_type}..."
+
           CSV.foreach(Rails.root.join('db', 'seeds', 'meshblocks', "#{data_type}.csv"), headers: true) do |attrs|
             model.create(id: attrs['id'].to_i, name: attrs['name'])
           end
