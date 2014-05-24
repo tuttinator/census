@@ -19,4 +19,20 @@
 #
 
 class Meshblock < ActiveRecord::Base
+
+  belongs_to :area_unit
+  belongs_to :urban_area, foreign_key: :urban_authority_id
+  belongs_to :ward
+  belongs_to :community_board
+
+  def as_json(options = {})
+    {
+      id: id,
+      area_unit: area_unit.name,
+      urban_authority: urban_area.name,
+      ward: ward.name,
+      community_board: community_board.name,
+      shape: RGeo::GeoJSON.encode(shape)
+    }
+  end
 end
