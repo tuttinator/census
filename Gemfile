@@ -6,6 +6,7 @@ gem 'rails', '4.1.1'
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'activerecord-postgis-adapter'
+gem 'rgeo-geojson'
 
 # Use SASS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
