@@ -4,4 +4,5 @@ rvm:
 before_script:
   - rm config/database.yml
   - cp config/database.travis.yml config/database.yml
-  - psql -U postgres -c "create extension postgis"
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - psql -U postgres -c 'create extension postgis'
