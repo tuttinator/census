@@ -44,7 +44,6 @@ group :development do
   gem 'annotate'
   gem 'pry-rails'
   gem 'better_errors'
-  gem 'brakeman', require: false
   gem 'rails_best_practices', require: false
   gem 'ruby-progressbar', require: false
 end
