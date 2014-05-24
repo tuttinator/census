@@ -2,10 +2,11 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0'
+gem 'rails', '4.1.1'
 # Use postgresql as the database for Active Record
 gem 'pg'
-gem 'activerecord-postgis-adapter', github: 'neighborland/activerecord-postgis-adapter'
+gem 'activerecord-postgis-adapter'
+gem 'rgeo-geojson'
 
 # Use SASS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -44,7 +45,6 @@ group :development do
   gem 'annotate'
   gem 'pry-rails'
   gem 'better_errors'
-  gem 'brakeman', require: false
   gem 'rails_best_practices', require: false
   gem 'ruby-progressbar', require: false
 end
