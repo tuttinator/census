@@ -29,9 +29,13 @@ class Meshblock < ActiveRecord::Base
     {
       id: id,
       area_unit: area_unit.name,
+      area_unit_id: area_unit_id,
       urban_authority: urban_area.name,
+      urban_authority_id: urban_authority_id,
       ward: ward.name,
+      ward_id: ward_id,
       community_board: community_board.name,
+      community_board_id: community_board_id,
       shape: RGeo::GeoJSON.encode(shape)
     }
   end
