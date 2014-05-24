@@ -1,6 +1,8 @@
 census
 ======
 
+[![Build Status](https://travis-ci.org/tuttinator/census.svg?branch=develop)](https://travis-ci.org/tuttinator/census)
+
 Rails app for visualising New Zealand Census data
 
 Census data is released in one large CSV available from
