@@ -47,6 +47,7 @@ group :development do
   gem 'better_errors'
   gem 'rails_best_practices', require: false
   gem 'ruby-progressbar', require: false
+  gem 'bower-rails', '~> 0.7.3'
 end
 
 group :development, :test do
