@@ -2,3 +2,5 @@
 # Check out https://github.com/42dev/bower-rails#ruby-dsl-configuration for more options
 
 # asset 'bootstrap'
+
+asset 'nz_meshblock_geojson', '1.0.0', github: 'tuttinator/nz_meshblock_geojson'
