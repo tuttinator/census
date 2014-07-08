@@ -527,7 +527,7 @@ ActiveRecord::Schema.define(version: 20140426041203) do
     t.integer "land_type_id"
     t.decimal "shape_length"
     t.decimal "shape_area"
-    t.spatial "shape",                                  limit: {:srid=>3857, :type=>"multi_polygon"}
+    t.spatial "shape"
   end
 
   create_table "motor_vehicles", force: true do |t|
