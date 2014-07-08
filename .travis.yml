@@ -1,11 +1,12 @@
 language: ruby
 rvm:
-  - 2.1.1
+  - 2.1.2
 before_script:
   - rm config/database.yml
   - cp config/database.travis.yml config/database.yml
   - psql -c 'create database travis_ci_test;' -U postgres
   - psql -U postgres -c 'create extension postgis;' -d travis_ci_test
+  - npm install bower -g
   - bundle exec rake bower:install
   - bundle exec rake db:migrate
   - bundle exec rake db:seed
