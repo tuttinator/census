@@ -36,13 +36,17 @@ module Seeds
 
         Dir["#{meshblock_geojson_path}/*.geojson"].each do |file|
 
-          geojson = File.read(file)
-          feature = JSON.parse(geojson)['features'].first
-          attrs = feature['properties']
-          shape = feature['geometry']
-
-          puts "Processing Meshblock #{attrs['MB2014']}..."
           begin
+            geojson = File.read(file)
+            feature = JSON.parse(geojson)['features'].first
+
+            next unless feature['geometry'].present?
+
+            attrs = feature['properties']
+            shape = feature['geometry']
+
+            puts "Processing Meshblock #{attrs['MB2014']}..."
+
             Meshblock.create(id:                                      attrs['MB2014'].to_i,
                              area_unit_id:                            attrs['AU2014'].to_i,
                              urban_authority_id:                      attrs['UA2014'].to_i,
@@ -57,7 +61,7 @@ module Seeds
                              shape_area:                              attrs['SHAPE_Area'],
                              shape:                                   RGeo::GeoJSON.decode(shape, json_parser: :json))
           rescue Exception => e
-            puts "Encountered an Exception with #{attrs['MB2014']}"
+            puts "Encountered an Exception with #{file}"
             puts e
           end
         end
