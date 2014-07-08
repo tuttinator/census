@@ -52,7 +52,7 @@ module Seeds
                            regional_council_maori_constituency_id:  attrs['MCON2014'].to_i,
                            shape_length:                            attrs['SHAPE_Leng'],
                            shape_area:                              attrs['SHAPE_Area'],
-                           shape:                                   attrs['geometry'])
+                           shape:                                   RGeo::GeoJSON.decode(attrs['geometry'], json_parser: :json))
         end
       end
     end
