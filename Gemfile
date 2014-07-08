@@ -40,6 +40,8 @@ gem 'spring',        group: :development
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'bower-rails', '~> 0.7.3'
+
 group :development do
   gem 'thin'
   gem 'annotate'
@@ -47,7 +49,6 @@ group :development do
   gem 'better_errors'
   gem 'rails_best_practices', require: false
   gem 'ruby-progressbar', require: false
-  gem 'bower-rails', '~> 0.7.3'
 end
 
 group :development, :test do
