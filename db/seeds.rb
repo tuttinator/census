@@ -714,7 +714,7 @@ end
 # Smokers
 puts 'Importing Smokers...'
 CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'smokers.csv'), headers: true) do |attrs|
-  StudyParticipation.create(meshblock_id: attrs['meshblock_id'],
+  Smoker.create(meshblock_id: attrs['meshblock_id'],
                             census_year_id: attrs['census_year_id'],
                             ex: attrs['ex'],
                             never: attrs['never'],
