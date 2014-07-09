@@ -15,7 +15,7 @@
 #  land_type_id                           :integer
 #  shape_length                           :decimal(, )
 #  shape_area                             :decimal(, )
-#  shape                                  :spatial          multipolygon, 3857
+#  shape                                  :spatial          geometry, 0
 #
 
 class Meshblock < ActiveRecord::Base

@@ -49,9 +49,11 @@ group :development do
   gem 'better_errors'
   gem 'rails_best_practices', require: false
   gem 'ruby-progressbar', require: false
+  gem 'spring-commands-rspec'
 end
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'guard-rspec', require: false
 end
