@@ -2,7 +2,7 @@ class CreateMeshblocks < ActiveRecord::Migration
   def change
     create_table :meshblocks do |t|
       t.integer :area_unit_id
-      t.integer :urban_authority_id
+      t.integer :urban_area_id
       t.integer :territorial_authority_id
       t.integer :ward_id
       t.integer :community_board_id

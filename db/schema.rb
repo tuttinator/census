@@ -516,7 +516,7 @@ ActiveRecord::Schema.define(version: 20140426041203) do
 
   create_table "meshblocks", force: true do |t|
     t.integer "area_unit_id"
-    t.integer "urban_authority_id"
+    t.integer "urban_area_id"
     t.integer "territorial_authority_id"
     t.integer "ward_id"
     t.integer "community_board_id"
