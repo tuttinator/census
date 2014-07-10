@@ -727,7 +727,7 @@ end
 
 # Study Participation
 puts 'Importing Study Participation...'
-CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'study_participation.csv'), headers: true) do |attrs|
+CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'study_participations.csv'), headers: true) do |attrs|
   StudyParticipation.create(meshblock_id: attrs['meshblock_id'],
                             census_year_id: attrs['census_year_id'],
                             full_and_part_time: attrs['full_and_part_time'],
