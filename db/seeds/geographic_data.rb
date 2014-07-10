@@ -49,7 +49,7 @@ module Seeds
 
             Meshblock.create(id:                                      attrs['MB2014'].to_i,
                              area_unit_id:                            attrs['AU2014'].to_i,
-                             urban_authority_id:                      attrs['UA2014'].to_i,
+                             urban_area_id:                           attrs['UA2014'].to_i,
                              territorial_authority_id:                attrs['TA2014'].to_i,
                              ward_id:                                 attrs['WARD2014'].to_i,
                              community_board_id:                      attrs['CB2014'].to_i,
