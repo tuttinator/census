@@ -1,5 +1,5 @@
 class MeshblocksController < ApplicationController
-  respond_to :json
+  respond_with :json
 
   def index
     respond_with Meshblock.pluck(:id)
