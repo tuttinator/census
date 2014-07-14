@@ -10,4 +10,13 @@
 
 class RegionalCouncilMaoriConstituency < ActiveRecord::Base
   validates_presence_of :name
+  has_many :meshblocks
+
+  def as_json(options = {})
+    {
+      id: id,
+      name: name,
+      meshblock_ids: meshblock_ids
+    }
+  end
 end
