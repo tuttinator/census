@@ -9,4 +9,3 @@ before_script:
   - npm install bower -g
   - bundle exec rake bower:install
   - bundle exec rake db:migrate
-  - bundle exec rake db:seed
