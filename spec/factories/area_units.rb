@@ -12,6 +12,6 @@
 
 FactoryGirl.define do
   factory :area_unit do
-    name "MyString"
+    name Faker::Address.city
   end
 end

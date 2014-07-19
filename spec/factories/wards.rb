@@ -12,6 +12,6 @@
 
 FactoryGirl.define do
   factory :ward do
-    name "MyString"
+    name Faker::Address.city
   end
 end

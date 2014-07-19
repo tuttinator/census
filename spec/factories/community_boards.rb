@@ -12,6 +12,6 @@
 
 FactoryGirl.define do
   factory :community_board do
-    name "MyString"
+    name Faker::Address.city
   end
 end

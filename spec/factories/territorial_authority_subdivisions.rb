@@ -12,6 +12,6 @@
 
 FactoryGirl.define do
   factory :territorial_authority_subdivision do
-    name "MyString"
+    name Faker::Address.city
   end
 end

@@ -12,6 +12,6 @@
 
 FactoryGirl.define do
   factory :land_type do
-    name "MyString"
+    name Faker::Address.city
   end
 end
