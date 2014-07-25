@@ -1,5 +1,4 @@
 require 'csv'
-require Rails.root.join 'lib', 'downloader'
 
 module Seeds
   module GeographicData
@@ -66,6 +65,31 @@ module Seeds
           end
         end
       end
+
+      process_union_shapes!
+
     end
+  end
+
+  def process_union_shapes!
+
+    ['area_units', 'urban_areas', 'territorial_authorities', 'wards', 'community_boards',
+     'territorial_authority_subdivisions', 'regional_councils', 'regional_council_constituencies',
+     'regional_council_maori_constituencies'].each do |data_type|
+
+       # Turns a string like 'area_units' into a constant for a class like AreaUnit
+       model = data_type.classify.constantize
+
+       model.each do |m|
+
+         puts "Processing #{m.class} #{m.id} ..."
+
+         m.shape = m.meshblocks.reduce(meshblocks.first.shape) do |total, n|
+           total.union n.shape
+         end
+
+         m.save!
+       end
+     end
   end
 end
