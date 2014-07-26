@@ -496,19 +496,20 @@ if IncomeSource.count == 0
   end
 end
 
-
-# Labour Status
-puts 'Importing Labour Status...'
-CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'labour_statuses.csv'), headers: true) do |attrs|
-  LabourStatus.create(meshblock_id: attrs['meshblock_id'],
-                      census_year_id: attrs['census_year_id'],
-                      full_time: attrs['full_time'],
-                      part_time: attrs['part_time'],
-                      unemployed: attrs['unemployed'],
-                      not_in_the_labour_force: attrs['not_in_the_labour_force'],
-                      status_unidentifiable: attrs['status_unidentifiable'],
-                      total: attrs['total'],
-                      total_stated: attrs['total_stated'])
+if LabourStatus.count == 0
+  # Labour Status
+  puts 'Importing Labour Status...'
+  CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'labour_statuses.csv'), headers: true) do |attrs|
+    LabourStatus.create(meshblock_id: attrs['meshblock_id'],
+                        census_year_id: attrs['census_year_id'],
+                        full_time: attrs['full_time'],
+                        part_time: attrs['part_time'],
+                        unemployed: attrs['unemployed'],
+                        not_in_the_labour_force: attrs['not_in_the_labour_force'],
+                        status_unidentifiable: attrs['status_unidentifiable'],
+                        total: attrs['total'],
+                        total_stated: attrs['total_stated'])
+  end
 end
 
 # Landlord Sectors
