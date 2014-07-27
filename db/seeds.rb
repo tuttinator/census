@@ -512,18 +512,20 @@ if LabourStatus.count == 0
   end
 end
 
-# Landlord Sectors
-puts 'Importing Landlord Sectors...'
-CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'landlord_sectors.csv'), headers: true) do |attrs|
-  LandlordSector.create(meshblock_id: attrs['meshblock_id'],
-                        census_year_id: attrs['census_year_id'],
-                        housing_new_zealand: attrs['housing_new_zealand'],
-                        local_authority_or_city_council: attrs['local_authority_or_city_council'],
-                        private_person_trust_or_business: attrs['private_person_trust_or_business'],
-                        stated_owned: attrs['stated_owned'],
-                        not_elsewhere_included: attrs['not_elsewhere_included'],
-                        total: attrs['total'],
-                        total_stated: attrs['total_stated'])
+if LandlordSector.count == 0
+  # Landlord Sectors
+  puts 'Importing Landlord Sectors...'
+  CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'landlord_sectors.csv'), headers: true) do |attrs|
+    LandlordSector.create(meshblock_id: attrs['meshblock_id'],
+                          census_year_id: attrs['census_year_id'],
+                          housing_new_zealand: attrs['housing_new_zealand'],
+                          local_authority_or_city_council: attrs['local_authority_or_city_council'],
+                          private_person_trust_or_business: attrs['private_person_trust_or_business'],
+                          stated_owned: attrs['stated_owned'],
+                          not_elsewhere_included: attrs['not_elsewhere_included'],
+                          total: attrs['total'],
+                          total_stated: attrs['total_stated'])
+  end
 end
 
 # Languages
