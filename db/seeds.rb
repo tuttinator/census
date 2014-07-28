@@ -527,21 +527,22 @@ if LandlordSector.count == 0
                           total_stated: attrs['total_stated'])
   end
 end
-
-# Languages
-puts 'Importing Languages...'
-CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'languages.csv'), headers: true) do |attrs|
-  Language.create(meshblock_id: attrs['meshblock_id'],
-                  census_year_id: attrs['census_year_id'],
-                  english: attrs['english'],
-                  maori: attrs['maori'],
-                  samoan: attrs['samoan'],
-                  sign: attrs['sign'],
-                  too_young: attrs['too_young'],
-                  not_elsewhere_included: attrs['not_elsewhere_included'],
-                  other: attrs['other'],
-                  total: attrs['total'],
-                  total_stated: attrs['total_stated'])
+if Language.count == 0
+  # Languages
+  puts 'Importing Languages...'
+  CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'languages.csv'), headers: true) do |attrs|
+    Language.create(meshblock_id: attrs['meshblock_id'],
+                    census_year_id: attrs['census_year_id'],
+                    english: attrs['english'],
+                    maori: attrs['maori'],
+                    samoan: attrs['samoan'],
+                    sign: attrs['sign'],
+                    too_young: attrs['too_young'],
+                    not_elsewhere_included: attrs['not_elsewhere_included'],
+                    other: attrs['other'],
+                    total: attrs['total'],
+                    total_stated: attrs['total_stated'])
+  end
 end
 
 # Motor Vehicles
