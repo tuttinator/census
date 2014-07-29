@@ -545,17 +545,19 @@ if Language.count == 0
   end
 end
 
-# Motor Vehicles
-puts 'Importing Motor Vehicles...'
-CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'motor_vehicles.csv'), headers: true) do |attrs|
-  MotorVehicle.create(meshblock_id: attrs['meshblock_id'],
-                      census_year_id: attrs['census_year_id'],
-                      one: attrs['one'],
-                      two: attrs['two'],
-                      three_or_more: attrs['three_or_more'],
-                      none: attrs['none'],
-                      not_elsewhere_included: attrs['not_elsewhere_included'],
-                      total: attrs['total'])
+if MotorVehicle.count == 0
+  # Motor Vehicles
+  puts 'Importing Motor Vehicles...'
+  CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'motor_vehicles.csv'), headers: true) do |attrs|
+    MotorVehicle.create(meshblock_id: attrs['meshblock_id'],
+                        census_year_id: attrs['census_year_id'],
+                        one: attrs['one'],
+                        two: attrs['two'],
+                        three_or_more: attrs['three_or_more'],
+                        none: attrs['none'],
+                        not_elsewhere_included: attrs['not_elsewhere_included'],
+                        total: attrs['total'])
+  end
 end
 
 
