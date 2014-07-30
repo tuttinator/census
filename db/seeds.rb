@@ -560,14 +560,16 @@ if MotorVehicle.count == 0
   end
 end
 
-
-# Night Populations
-puts 'Importing Night Populations...'
-CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'night_populations.csv'), headers: true) do |attrs|
-  NightPopulation.create(meshblock_id: attrs['meshblock_id'],
-                         census_year_id: attrs['census_year_id'],
-                         residents: attrs['residents'])
+if NightPopulation.count == 0
+  # Night Populations
+  puts 'Importing Night Populations...'
+  CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'night_populations.csv'), headers: true) do |attrs|
+    NightPopulation.create(meshblock_id: attrs['meshblock_id'],
+                           census_year_id: attrs['census_year_id'],
+                           residents: attrs['residents'])
+  end
 end
+
 
 # NzscOccupations
 puts 'Importing NzscOccupation...'
