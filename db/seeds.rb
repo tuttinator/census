@@ -588,22 +588,23 @@ if NzscOccupation.count == 0
                           trades_workers: attrs['trades_workers'])
   end
 end
-
-# NzscWorkplaceOccupations
-puts 'Importing NzscWorkplaceOccupations...'
-CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'nzsc_workplace_occupations.csv'), headers: true) do |attrs|
-  NzscWorkplaceOccupation.create(meshblock_id: attrs['meshblock_id'],
-                                 census_year_id: attrs['census_year_id'],
-                                 agriculture_and_fishery_workers: attrs['agriculture_and_fishery_workers'],
-                                 clerks: attrs['clerks'],
-                                 elementary_occupations: attrs['elementary_occupations'],
-                                 legislators_admins_and_managers: attrs['legislators_admins_and_managers'],
-                                 plant_and_machine_operators: attrs['plant_and_machine_operators'],
-                                 professionals: attrs['professionals'],
-                                 service_and_sales_workers: attrs['service_and_sales_workers'],
-                                 technicians_and_associate_professionals: attrs['technicians_and_associate_professionals'],
-                                 total: attrs['total'],
-                                 trades_workers: attrs['trades_workers'])
+if NzscWorkplaceOccupation.count == 0
+  # NzscWorkplaceOccupations
+  puts 'Importing NzscWorkplaceOccupations...'
+  CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'nzsc_workplace_occupations.csv'), headers: true) do |attrs|
+    NzscWorkplaceOccupation.create(meshblock_id: attrs['meshblock_id'],
+                                   census_year_id: attrs['census_year_id'],
+                                   agriculture_and_fishery_workers: attrs['agriculture_and_fishery_workers'],
+                                   clerks: attrs['clerks'],
+                                   elementary_occupations: attrs['elementary_occupations'],
+                                   legislators_admins_and_managers: attrs['legislators_admins_and_managers'],
+                                   plant_and_machine_operators: attrs['plant_and_machine_operators'],
+                                   professionals: attrs['professionals'],
+                                   service_and_sales_workers: attrs['service_and_sales_workers'],
+                                   technicians_and_associate_professionals: attrs['technicians_and_associate_professionals'],
+                                   total: attrs['total'],
+                                   trades_workers: attrs['trades_workers'])
+  end
 end
 
 # Partnerships
