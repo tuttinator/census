@@ -607,16 +607,18 @@ if NzscWorkplaceOccupation.count == 0
   end
 end
 
-# Partnerships
-puts 'Importing Partnerships...'
-CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'partnerships.csv'), headers: true) do |attrs|
-  Partnership.create(meshblock_id: attrs['meshblock_id'],
-                     census_year_id: attrs['census_year_id'],
-                     non_partnered: attrs['non_partnered'],
-                     not_stated: attrs['not_stated'],
-                     partnered: attrs['partnered'],
-                     total: attrs['total'],
-                     total_stated: attrs['total_stated'])
+if Partnership.count == 0
+  # Partnerships
+  puts 'Importing Partnerships...'
+  CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'partnerships.csv'), headers: true) do |attrs|
+    Partnership.create(meshblock_id: attrs['meshblock_id'],
+                       census_year_id: attrs['census_year_id'],
+                       non_partnered: attrs['non_partnered'],
+                       not_stated: attrs['not_stated'],
+                       partnered: attrs['partnered'],
+                       total: attrs['total'],
+                       total_stated: attrs['total_stated'])
+  end
 end
 
 # Personal Incomes
