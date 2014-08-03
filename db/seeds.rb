@@ -639,27 +639,28 @@ if PersonalIncome.count == 0
   end
 end
 
-# Qualifications
-puts 'Importing Qualifications...'
-CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'qualifications.csv'), headers: true) do |attrs|
-  Qualification.create(meshblock_id: attrs['meshblock_id'],
-                       census_year_id: attrs['census_year_id'],
-                       doctortates: attrs['doctortates'],
-                       level_five_or_six: attrs['level_five_or_six'],
-                       level_four: attrs['level_four'],
-                       level_one: attrs['level_one'],
-                       level_seven: attrs['level_seven'],
-                       level_three: attrs['level_three'],
-                       level_two: attrs['level_two'],
-                       masters: attrs['masters'],
-                       no_qualification: attrs['no_qualification'],
-                       not_elsewhere_included: attrs['not_elsewhere_included'],
-                       overseas_secondary: attrs['overseas_secondary'],
-                       postgraduate: attrs['postgraduate'],
-                       total: attrs['total'],
-                       total_stated: attrs['total_stated'])
+if Qualification.count == 0
+  # Qualifications
+  puts 'Importing Qualifications...'
+  CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'qualifications.csv'), headers: true) do |attrs|
+    Qualification.create(meshblock_id: attrs['meshblock_id'],
+                         census_year_id: attrs['census_year_id'],
+                         doctortates: attrs['doctortates'],
+                         level_five_or_six: attrs['level_five_or_six'],
+                         level_four: attrs['level_four'],
+                         level_one: attrs['level_one'],
+                         level_seven: attrs['level_seven'],
+                         level_three: attrs['level_three'],
+                         level_two: attrs['level_two'],
+                         masters: attrs['masters'],
+                         no_qualification: attrs['no_qualification'],
+                         not_elsewhere_included: attrs['not_elsewhere_included'],
+                         overseas_secondary: attrs['overseas_secondary'],
+                         postgraduate: attrs['postgraduate'],
+                         total: attrs['total'],
+                         total_stated: attrs['total_stated'])
+  end
 end
-
 
 # Relationships
 puts 'Importing Relationships...'
