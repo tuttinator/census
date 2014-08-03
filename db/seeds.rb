@@ -620,22 +620,23 @@ if Partnership.count == 0
                        total_stated: attrs['total_stated'])
   end
 end
-
-# Personal Incomes
-puts 'Importing Personal Incomes...'
-CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'personal_incomes.csv'), headers: true) do |attrs|
-  PersonalIncome.create(meshblock_id: attrs['meshblock_id'],
-                        census_year_id: attrs['census_year_id'],
-                        five_thousand_or_less: attrs['five_thousand_or_less'],
-                        five_to_ten_thousand: attrs['five_to_ten_thousand'],
-                        ten_to_twenty_thousand: attrs['ten_to_twenty_thousand'],
-                        twenty_to_thirty_thousand: attrs['twenty_to_thirty_thousand'],
-                        thirty_to_fifty_thousand: attrs['thirty_to_fifty_thousand'],
-                        fifty_thousand_or_more: attrs['fifty_thousand_or_more'],
-                        median: attrs['median'],
-                        not_stated: attrs['not_stated'],
-                        total: attrs['total'],
-                        total_stated: attrs['total_stated'])
+if PersonalIncome.count == 0
+  # Personal Incomes
+  puts 'Importing Personal Incomes...'
+  CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'personal_incomes.csv'), headers: true) do |attrs|
+    PersonalIncome.create(meshblock_id: attrs['meshblock_id'],
+                          census_year_id: attrs['census_year_id'],
+                          five_thousand_or_less: attrs['five_thousand_or_less'],
+                          five_to_ten_thousand: attrs['five_to_ten_thousand'],
+                          ten_to_twenty_thousand: attrs['ten_to_twenty_thousand'],
+                          twenty_to_thirty_thousand: attrs['twenty_to_thirty_thousand'],
+                          thirty_to_fifty_thousand: attrs['thirty_to_fifty_thousand'],
+                          fifty_thousand_or_more: attrs['fifty_thousand_or_more'],
+                          median: attrs['median'],
+                          not_stated: attrs['not_stated'],
+                          total: attrs['total'],
+                          total_stated: attrs['total_stated'])
+  end
 end
 
 # Qualifications
