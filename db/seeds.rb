@@ -662,19 +662,20 @@ if Qualification.count == 0
   end
 end
 
-# Relationships
-puts 'Importing Relationships...'
-CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'relationships.csv'), headers: true) do |attrs|
-  Relationship.create(meshblock_id: attrs['meshblock_id'],
-                      census_year_id: attrs['census_year_id'],
-                      married: attrs['married'],
-                      never_married: attrs['never_married'],
-                      not_elsewhere_included: attrs['not_elsewhere_included'],
-                      separated: attrs['separated'],
-                      total: attrs['total'],
-                      total_stated: attrs['total_stated'])
+if Relationship.count == 0
+  # Relationships
+  puts 'Importing Relationships...'
+  CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'relationships.csv'), headers: true) do |attrs|
+    Relationship.create(meshblock_id: attrs['meshblock_id'],
+                        census_year_id: attrs['census_year_id'],
+                        married: attrs['married'],
+                        never_married: attrs['never_married'],
+                        not_elsewhere_included: attrs['not_elsewhere_included'],
+                        separated: attrs['separated'],
+                        total: attrs['total'],
+                        total_stated: attrs['total_stated'])
+  end
 end
-
 
 # Religions
 puts 'Importing Religions...'
