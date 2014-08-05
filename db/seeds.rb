@@ -677,26 +677,27 @@ if Relationship.count == 0
   end
 end
 
-# Religions
-puts 'Importing Religions...'
-CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'religions.csv'), headers: true) do |attrs|
-  Religion.create(meshblock_id: attrs['meshblock_id'],
-                  census_year_id: attrs['census_year_id'],
-                  buddhist: attrs['buddhist'],
-                  christian: attrs['christian'],
-                  hindu: attrs['hindu'],
-                  jewish: attrs['jewish'],
-                  maori_christian: attrs['maori_christian'],
-                  muslim: attrs['muslim'],
-                  spiritual: attrs['spiritual'],
-                  other: attrs['other'],
-                  no_religion: attrs['no_religion'],
-                  object: attrs['object'],
-                  not_elsewhere_included: attrs['not_elsewhere_included'],
-                  total: attrs['total'],
-                  total_stated: attrs['total_stated'])
+if Religion.count == 0
+  # Religions
+  puts 'Importing Religions...'
+  CSV.foreach(Rails.root.join('db', 'seeds', 'census_data', 'religions.csv'), headers: true) do |attrs|
+    Religion.create(meshblock_id: attrs['meshblock_id'],
+                    census_year_id: attrs['census_year_id'],
+                    buddhist: attrs['buddhist'],
+                    christian: attrs['christian'],
+                    hindu: attrs['hindu'],
+                    jewish: attrs['jewish'],
+                    maori_christian: attrs['maori_christian'],
+                    muslim: attrs['muslim'],
+                    spiritual: attrs['spiritual'],
+                    other: attrs['other'],
+                    no_religion: attrs['no_religion'],
+                    object: attrs['object'],
+                    not_elsewhere_included: attrs['not_elsewhere_included'],
+                    total: attrs['total'],
+                    total_stated: attrs['total_stated'])
+  end
 end
-
 
 # Residence Years
 puts 'Importing Residence Years...'
