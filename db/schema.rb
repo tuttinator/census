@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20140426041203) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
+  enable_extension "hstore"
 
   create_table "anzic96_industries", force: true do |t|
     t.integer  "meshblock_id"
@@ -516,7 +517,7 @@ ActiveRecord::Schema.define(version: 20140426041203) do
 
   create_table "meshblocks", force: true do |t|
     t.integer "area_unit_id"
-    t.integer "urban_area_id"
+    t.integer "urban_authority_id"
     t.integer "territorial_authority_id"
     t.integer "ward_id"
     t.integer "community_board_id"
@@ -527,7 +528,7 @@ ActiveRecord::Schema.define(version: 20140426041203) do
     t.integer "land_type_id"
     t.decimal "shape_length"
     t.decimal "shape_area"
-    t.spatial "shape"
+    t.spatial "shape",                                  limit: {:srid=>0, :type=>"polygon"}
   end
 
   create_table "motor_vehicles", force: true do |t|
